@@ -1,0 +1,163 @@
+{
+    "chains": [
+        {
+            "name": "nride",
+            "chain_id": "localchain-1",
+            "docker_image": {
+                "repository": "nride",
+                "version": "local",
+                "uid-gid": ""
+            },
+            "gas_prices": "0.0unride",
+            "gas_adjustment": 2,
+            "genesis": {
+                "modify": [
+                    {
+                        "key": "app_state.gov.params.voting_period",
+                        "value": "10s"
+                    },
+                    {
+                        "key": "app_state.gov.params.max_deposit_period",
+                        "value": "10s"
+                    },
+                    {
+                        "key": "app_state.gov.params.min_deposit.0.denom",
+                        "value": "unride"
+                    },
+                    {
+                        "key": "app_state.gov.params.min_deposit.0.amount",
+                        "value": "1"
+                    }
+                ],
+                "accounts": [
+                    {
+                        "name": "acc0",
+                        "amount": "25000000000%DENOM%",
+                        "address": "nride1hj5fveer5cjtn4wd6wstzugjfdxzl0xpxnepzk",
+                        "mnemonic": "decorate bright ozone fork gallery riot bus exhaust worth way bone indoor calm squirrel merry zero scheme cotton until shop any excess stage laundry"
+                    },
+                    {
+                        "name": "acc1",
+                        "amount": "24000000000%DENOM%",
+                        "address": "nride1efd63aw40lxf3n4mhf7dzhjkr453axur6829tl",
+                        "mnemonic": "wealth flavor believe regret funny network recall kiss grape useless pepper cram hint member few certain unveil rather brick bargain curious require crowd raise"
+                    },
+                    {
+                        "name": "user0",
+                        "amount": "100000%DENOM%",
+                        "address": "nride15j7r9erydh2nqgef0hkf6y6n4ee490dj3n9twx",
+                        "mnemonic": "purse donor inhale buffalo fossil home barrel gap vendor correct stairs lock vicious planet creek leopard credit lab session replace pipe runway story myself"
+                    },
+                    {
+                        "name": "user1",
+                        "amount": "100000%DENOM%",
+                        "address": "nride1tjs6m933l6xv7vmw5d5lp22s3zdav4ln6tfha6",
+                        "mnemonic": "bid midnight stove profit ready family stadium title ice winter manage tired music movie tube bone misery fade excuse joy fan common twist shaft"
+                    }
+                ]
+            },
+            "config_file_overrides": [
+                {
+                    "file": "config/app.toml",
+                    "paths": {
+                        "api.enabled-unsafe-cors": true
+                    }
+                },
+                {
+                    "file": "config/config.toml",
+                    "paths": {
+                        "rpc.cors_allowed_origins": [
+                            "*"
+                        ]
+                    }
+                }
+            ],
+            "number_vals": 1,
+            "number_node": 0,
+            "chain_type": "cosmos",
+            "coin_type": 118,
+            "binary": "nrided",
+            "bech32_prefix": "nride",
+            "denom": "unride",
+            "trusting_period": "336h",
+            "debugging": false,
+            "block_time": "2000ms",
+            "host_port_override": {
+                "1317": "1317",
+                "26656": "26656",
+                "26657": "26657",
+                "9090": "9090"
+            },
+            "ics_consumer_link": "localcosmos-1",
+            "ics_version_override": {}
+        },
+        {
+            "name": "gaia",
+            "chain_id": "localcosmos-1",
+            "docker_image": {
+                "repository": "",
+                "version": "v15.1.0",
+                "uid-gid": "1025:1025"
+            },
+            "gas_prices": "0.0uatom",
+            "gas_adjustment": 2,
+            "genesis": {
+                "modify": [
+                    {
+                        "key": "app_state.gov.params.voting_period",
+                        "value": "10s"
+                    },
+                    {
+                        "key": "app_state.gov.params.max_deposit_period",
+                        "value": "10s"
+                    },
+                    {
+                        "key": "app_state.gov.params.min_deposit.0.denom",
+                        "value": "uatom"
+                    },
+                    {
+                        "key": "app_state.gov.params.min_deposit.0.amount",
+                        "value": "1"
+                    }
+                ],
+                "accounts": [
+                    {
+                        "name": "acc0",
+                        "amount": "25000000000%DENOM%",
+                        "address": "cosmos1hj5fveer5cjtn4wd6wstzugjfdxzl0xpxvjjvr",
+                        "mnemonic": "decorate bright ozone fork gallery riot bus exhaust worth way bone indoor calm squirrel merry zero scheme cotton until shop any excess stage laundry"
+                    },
+                    {
+                        "name": "acc1",
+                        "amount": "24000000000%DENOM%",
+                        "address": "cosmos1efd63aw40lxf3n4mhf7dzhjkr453axur6cpk92",
+                        "mnemonic": "wealth flavor believe regret funny network recall kiss grape useless pepper cram hint member few certain unveil rather brick bargain curious require crowd raise"
+                    },
+                    {
+                        "name": "user0",
+                        "amount": "100000%DENOM%",
+                        "address": "cosmos1p6avcrphgwef7ug85j9gykul90ak4fhhnsvj6d",
+                        "mnemonic": "master below defense front kitchen long thumb leave column never ice fuel inhale cactus squirrel believe hidden addict quit entry flush slice afford payment"
+                    },
+                    {
+                        "name": "user1",
+                        "amount": "100000%DENOM%",
+                        "address": "cosmos16ly5n46h6vhwh27jmkt4xh8886s85rgfwnwxz2",
+                        "mnemonic": "raven pilot addict image pottery thunder payment round viable universe misery tower replace render palace royal cycle roast myth wisdom wrap roast tent happy"
+                    }
+                ]
+            },
+            "number_vals": 1,
+            "number_node": 0,
+            "chain_type": "cosmos",
+            "coin_type": 118,
+            "binary": "gaiad",
+            "bech32_prefix": "cosmos",
+            "denom": "uatom",
+            "trusting_period": "336h",
+            "debugging": true,
+            "block_time": "2000ms",
+            "ics_version_override": {}
+        }
+    ]
+}
