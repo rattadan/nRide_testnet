@@ -1,5 +1,6 @@
 # nRide ICS Testnet Repository
 
+- 'git clone https://github.com/rattadan/nRide_testnet.git'   * Clone the Repository
 
 ## Local Images
 
