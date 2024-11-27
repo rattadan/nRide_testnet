@@ -1,13 +1,13 @@
 # nRide ICS Testnet Repository
 
-- 'git clone https://github.com/rattadan/nRide_testnet.git'   * Clone the Repository
+- `git clone https://github.com/rattadan/nRide_testnet.git`   * Clone the Repository
 
 ## Local Images
 
 - `make install`      *Builds the chain's binary*
 - `make local-image`  *Builds the chain's docker image*
-- 'make testnet'      *Builds the testnet*
-- 'make sh-testnet'   *Build the local testnet*
+- `make testnet`     *Builds the testnet*
+- `make sh-testnet`   *Build the local testnet*
 ## Testing
 
 please join the given Telegram Group, if you like to opt-in into our testnet
