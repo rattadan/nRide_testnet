@@ -3,7 +3,7 @@
   "chain_name": "nride",
   "chain_type": "cosmos",
   "status": "live",
-  "website": "https://example.com",
+  "website": "https://www.nride.com",
   "network_type": "testnet",
   "pretty_name": "Nride",
   "chain_id": "localchain-1",
@@ -36,7 +36,7 @@
     }
   },
   "codebase": {
-    "git_repo": "https://github.com/rollchains/nride",
+    "git_repo": "https://github.com/rattadan/nRide_testnet",
     "recommended_version": "v1.0.0",
     "compatible_versions": [
       "v0.9.0"
@@ -54,7 +54,7 @@
     ],
     "genesis": {
       "name": "v1",
-      "genesis_url": "https://github.com/rollchains/nride/networks/raw/main/genesis.json"
+      "genesis_url": "https://github.com/rattadan/nRide_testnet/networks/raw/main/genesis.json"
     },
     "versions": [
       {
@@ -92,9 +92,9 @@
   "explorers": [
     {
       "kind": "cosmos",
-      "url": "https://example.com",
-      "tx_page": "https://example.com/tx",
-      "account_page": "https://example.com/account"
+      "url": "https://ping.pub/nride",
+      "tx_page": "https://ping.pub/nride/tx",
+      "account_page": "https://ping.pub/nride"
     }
   ],
   "keywords": [
