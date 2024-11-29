@@ -15,6 +15,15 @@ https://t.me/nride_official
 - `nrided init <your_moniker> --chain-id nride-1`      *create folder and init node*
 - `nano .nrided/config/app.toml`      *head to your home folder and edit app.toml config file in hidden config directory*
 - edit app.toml, change `minimum-gas-prices = "0stake"` to `minimum-gas-prices = "0unride"`
+- 
+If you run a cosmos testnet Validator node on the same machine:
+- `nano .nrided/config/config.toml`      *check for RPC port allocation, to avoid port clashing*
+- `proxy_app = "tcp://127.0.0.1:26658"` change to `proxy_app = "tcp://127.0.0.1:27658"`  also check if your firewall allows these connections
+- `laddr = "tcp://127.0.0.1:26657"` change to `tcp://127.0.0.1:27657"`  
+
+
+
+
 
 
 ## Webapp Template
