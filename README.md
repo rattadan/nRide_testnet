@@ -16,13 +16,13 @@ https://t.me/nride_official
 - `nano .nrided/config/app.toml`      *head to your home folder and edit app.toml config file in hidden config directory*
 - edit app.toml, change `minimum-gas-prices = "0stake"` to `minimum-gas-prices = "0unride"`
 - 
-If you run a cosmos testnet Validator node on the same machine:
+If you run a Cosmos Testnet Validator node on the same machine:
 - `nano .nrided/config/config.toml`      *check for RPC port allocation, to avoid port clashing*
 - `proxy_app = "tcp://127.0.0.1:26658"` change to `proxy_app = "tcp://127.0.0.1:27658"`  also check if your firewall allows these connections
 - under the [rpc] and [p2p] section change each
 - `laddr = "tcp://127.0.0.1:26657"` change to `tcp://127.0.0.1:27657"`
 
-## Further ressources:
+## Further resources:
 Game of Chains: First ICS Testnet playground
 https://github.com/LavenderFive/game-of-chains-2022/blob/8b3d2c40b56a30a45e444d65bd9419ad7c0fe1a1/README.md
 
