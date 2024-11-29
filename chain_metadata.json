@@ -1,22 +1,22 @@
 {
   "display": {
-    "name": "nride",
-    "description": "nride is an Interchain blockchain.",
+    "name": "nRide web3 mobility network",
+    "description": "nRide is developing a peer-to-peer ride-hailing protocol that connects riders and drivers directly, eliminating intermediaries. By removing middlemen, nRide aims to reduce fees and increase transparency, while also creating a more equitable platform for drivers and riders. Additionally, nRide solves the problem of isolated user bases by providing a standardized way for ride-hailing applications to connect with each other and access a larger user base, fostering a more open and competitive marketplace",
     "links": {
-      "logo": "https://raw.githubusercontent.com/cosmos/chain-registry/master/cosmoshub/images/atom.png",
-      "discord": "https://discord.gg/your-discord",
-      "email": "example@example.com",
-      "github": "https://github.com/rollchains/nride",
-      "telegram": "https://t.me/example",
-      "twitter": "https://twitter.com/example_account",
-      "website": "https://example.com",
-      "whitepaper": "https://bitcoin.org/bitcoin.pdf"
+      "logo": "https://raw.githubusercontent.com/cosmostation/chainlist/refs/heads/main/chain/juno/asset/nride.png",
+      "discord": "https://discord.gg/XC9Br9CnBv",
+      "email": "info@nride.com",
+      "github": "https://github.com/nride",
+      "telegram": "https://t.me/nride_official",
+      "twitter": "https://twitter.com/nRide12",
+      "website": "https://www.nride.com",
+      "whitepaper": "https://cdn.prod.website-files.com/640b40c82ea4ad559f961d04/641f69f6ce09cd6ccd433e36_nride_wp_v2.pdf"
     },
     "widget": {
-      "title": "nride",
-      "description": "nride is a Interchain blockchain.",
-      "buttonText": "Learn More",
-      "buttonUrl": "https://example.com"
+      "title": "Join the ride-hailing revolution...",
+      "description": "Try the app and catch a ride",
+      "buttonText": "Get started",
+      "buttonUrl": "https://www.nride.com/get-started"
     }
   }
 }
