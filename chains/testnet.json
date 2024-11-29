@@ -2,7 +2,7 @@
     "chains": [
         {
             "name": "nride",
-            "chain_id": "localchain-1",
+            "chain_id": "provider",
             "docker_image": {
                 "repository": "nride",
                 "version": "local",
@@ -14,11 +14,11 @@
                 "modify": [
                     {
                         "key": "app_state.gov.params.voting_period",
-                        "value": "10s"
+                        "value": "100s"
                     },
                     {
                         "key": "app_state.gov.params.max_deposit_period",
-                        "value": "10s"
+                        "value": "100s"
                     },
                     {
                         "key": "app_state.gov.params.min_deposit.0.denom",
@@ -31,9 +31,9 @@
                 ],
                 "accounts": [
                     {
-                        "name": "acc0",
+                        "name": "nRide_Testnet_Validator",
                         "amount": "25000000000%DENOM%",
-                        "address": "nride1hj5fveer5cjtn4wd6wstzugjfdxzl0xpxnepzk",
+                        "address": "cosmos17rfsq7dpl3chc0eku7s04yumvjx86mkjnwhsrr",
                         "mnemonic": "decorate bright ozone fork gallery riot bus exhaust worth way bone indoor calm squirrel merry zero scheme cotton until shop any excess stage laundry"
                     },
                     {
