@@ -22,7 +22,7 @@ If you run a cosmos testnet Validator node on the same machine:
 - under the [rpc] and [p2p] section change each
 - `laddr = "tcp://127.0.0.1:26657"` change to `tcp://127.0.0.1:27657"`
 
-## Furthter ressources:
+## Further ressources:
 Game of Chains: First ICS Testnet playground
 https://github.com/LavenderFive/game-of-chains-2022/blob/8b3d2c40b56a30a45e444d65bd9419ad7c0fe1a1/README.md
 
@@ -31,9 +31,6 @@ https://cosmos.github.io/interchain-security/consumer-development/app-integratio
 
 Spawn Github:
 https://rollchains.github.io/spawn/v0.50/
-
-
-
 
 
 
