@@ -14,6 +14,7 @@ please join the given Telegram Group, if you like to opt-in into our testnet
 https://t.me/nride_official
 - `nrided init <your_moniker> --chain-id nride-1`      *create folder and init node*
 - `nano .nrided/config/app.toml`      *head to your home folder and edit app.toml config file in hidden config directory*
+- edit app.toml, change minimum-gas-prices = "0stake" to `minimum-gas-prices = "0unride"`
 
 
 ## Webapp Template
