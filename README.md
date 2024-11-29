@@ -20,7 +20,17 @@ If you run a cosmos testnet Validator node on the same machine:
 - `nano .nrided/config/config.toml`      *check for RPC port allocation, to avoid port clashing*
 - `proxy_app = "tcp://127.0.0.1:26658"` change to `proxy_app = "tcp://127.0.0.1:27658"`  also check if your firewall allows these connections
 - under the [rpc] and [p2p] section change each
-- `laddr = "tcp://127.0.0.1:26657"` change to `tcp://127.0.0.1:27657"`  
+- `laddr = "tcp://127.0.0.1:26657"` change to `tcp://127.0.0.1:27657"`
+
+## Furthter ressources:
+Game of Chains: First ICS Testnet playground
+https://github.com/LavenderFive/game-of-chains-2022/blob/8b3d2c40b56a30a45e444d65bd9419ad7c0fe1a1/README.md
+
+Interchain ICS repository:
+https://cosmos.github.io/interchain-security/consumer-development/app-integration
+
+Spawn Github:
+https://rollchains.github.io/spawn/v0.50/
 
 
 
