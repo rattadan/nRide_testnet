@@ -21,6 +21,9 @@ If you run a Cosmos Testnet Validator node on the same machine:
 - `proxy_app = "tcp://127.0.0.1:26658"` change to `proxy_app = "tcp://127.0.0.1:27658"`  also check if your firewall allows these connections
 - under the [rpc] and [p2p] section change each
 - `laddr = "tcp://127.0.0.1:26657"` change to `tcp://127.0.0.1:27657"`
+- in client.toml change `node = "tcp://localhost:26657"`  to `node = "tcp://localhost:27657"` 
+
+
 
 ## Further resources:
 Game of Chains: First ICS Testnet playground
