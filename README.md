@@ -70,6 +70,25 @@ Query if your chain has been subscribed:
 
 - `gaiad q provider consumer-chain 115`
 
+A validator can opt in to a consumer chain by issuing the following message:
+
+```
+interchain-security-pd tx provider opt-in <consumer-id> <optional consumer-pub-key>
+```
+
+**Where:**
+- `consumer-id` is the identifier of the consumer chain the validator wants to opt in to.
+- `consumer-pub-key` corresponds to the public key the validator wants to use on the consumer chain, and it has the following format: `{"@type":"/cosmos.crypto.ed25519.PubKey","key":"<key>"}`.
+
+**Note:**
+- With my binary instance, there was an error, so you have to leave the pubkey away...
+
+Example command:
+
+```
+gaiad tx provider opt-in 115 --from wallet --chain-id provider --gas auto --gas-adjustment 2 --gas-prices 0.005uatom -y
+```
+
 ## nRide Genesis Configuration
 
 This repository contains the configuration files and scripts for setting up the nRide blockchain network.
@@ -97,4 +116,3 @@ This repository contains the configuration files and scripts for setting up the 
 ### Important Parameters
 
 - **Genesis Time**: Set in `nride_fresh_genesis.json` to specify the start time of the blockchain.
-
