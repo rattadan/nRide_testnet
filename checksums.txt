@@ -1,0 +1,4 @@
+Checksum nrided binary:
+
+	"genesis_hash": "d04d8929a1f7afba852317f0a1b378232416853a5a5982f01020b94458db2cfd",
+	"binary_hash": "503d2c7cfc7a1872a21ee0cc3fa85e1512bc21262b0c0943373e142cc8125ec0",
