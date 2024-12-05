@@ -38,10 +38,9 @@ To connect your node to the network, add the following seed to your `config.toml
 * You must submit your opt-in transaction before the spawn time is reached to start signing blocks as soon as the chain starts.
 
 ```
-gaiad tx provider opt-in nride-1 c32ef82e917cc2a6256521d09a38056de267e8
+gaiad tx provider opt-in 115 --from wallet --chain-id provider --gas auto --gas-adjustment 2 --gas-prices 0.005uatom -y
 ```
 
-gaiad tx provider create-consumer create.json --from wallet --chain-id provider --gas auto --gas-adjustment 2 --gas-prices 0.005uatom -y
 
 
 ## Further resources:
