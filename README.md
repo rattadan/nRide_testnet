@@ -1,6 +1,5 @@
 # nRide ICS Testnet Repository
 
-- `git clone https://github.com/rattadan/nRide_testnet.git`   * Clone the Repository
 
 # Phases of launch
 
@@ -40,6 +39,7 @@ As an opted-in Validator you and all your stakers will earn network rewards from
 
 
 
+## Run a local nRide Node on your machine
 
 If you want to run a nRide Node on your machine too, you will need to install the "nrided" binary: 
 
@@ -50,10 +50,8 @@ If you want to run a nRide Node on your machine too, you will need to install th
 copy the genesis_after_spawn.json into your config folder and start your nRide Node
 
 
- 
 
-
-## Setting up the nRide Node (not necessary if you only want to opt-in...)
+# Setting up the nRide Node (not necessary if you only want to opt-in...)
 
 please join the given Telegram Group, if you like to opt-in into our testnet
 https://t.me/nride_official
@@ -137,8 +135,9 @@ Query if your chain has been subscribed:
 A validator can opt in to a consumer chain by issuing the following message:
 
 ```
-interchain-security-pd tx provider opt-in <consumer-id> <optional consumer-pub-key>
+interchain-security-pd tx provider opt-in <consumer-id>
 ```
+Consumer ID for Testnet = 115
 
 **Where:**
 - `consumer-id` is the identifier of the consumer chain the validator wants to opt in to.
@@ -176,6 +175,9 @@ This repository contains the configuration files and scripts for setting up the 
 
 3. **Genesis File n**
    -  `nride_fresh_genesis.json` 
+
+   Notice: You don't need to add a mandatory Validator Information directly into the genesis file, because the ICS concensus module is being linked with the underlying Cosmos Validator Set, not the staking Validator set.
+
 ### Important Parameters
 
 - **Genesis Time**: Set in `nride_fresh_genesis.json` to specify the start time of the blockchain.
