@@ -5,32 +5,55 @@
 # Phases of launch
 
 There are several phases of the nRide ICS Chain launch:
-1. Build the binaries using the spawn-cli
+1. Build the binaries using the spawn-cli  
 2. Creating a pre-spawn genesis.json file
 3. TX a consumer-chain create message in the Security-Providing Network
 4. after spawn time reached, copy the Crosschain-Validation state into the Consumer Node
 5. Start the Consumer Node
 
-Just a few notes: If you start your node before spawn time has reached and no CCV state imported, you will get an error that your network does not reacht the "default-Power-reduction". 
+Just a few notes: If you start your node before spawn time has reached and no CCV state imported, you will get an error that your network does not reach the "default-Power-reduction". 
 
 Although you can create Validators in the Genesis file, this set is not necessary for the consensus engine. The Validator Set in an ICS chain serves as blockchain history database and RPC/gRPC nodes and as Token distribution service to Stakers. Rewards will be distributed to the underlying ATOM Validators resp. their stakers and the network stakers on a 50:50 ratio. So with opting-in as a CosmosHUB mainnet Validator, you will generate rewards for your Stakers and your own Commission Share
 
-If you already run a Cosmos Validator in the acive Set, For Opting-in only, there is only one command necessary:
+If you already run a Cosmos Validator in the active Set, For Opting-in only, there is only one command necessary:
+
+
+### Opt in as Cosmos Validator
+If you already run a Cosmos Validator in the active Set, For Opting-in only, there is only one command necessary:
+
+* You must submit your opt-in transaction before the spawn time is reached to start signing blocks as soon as the chain starts.
 
 ```
 gaiad tx provider opt-in 115 --from wallet --chain-id provider --gas auto --gas-adjustment 2 --gas-prices 0.005uatom -y
 ```
 
+Check if your subscription worked:
+
+`gaiad q provider consumer-opted-in-validators 115`
+
+while 115 is the consumer-chain-id
+
+As an opted-in Validator you and all your stakers will earn network rewards from the nRide network
+
+
+
+
+
+
+
+If you want to run a nRide Node on your machine too, you will need to install the "nrided" binary: 
+
+- `git clone https://github.com/rattadan/nRide_testnet.git`   * Clone the Repository
+
+- make install  
+
+copy the genesis_after_spawn.json into your config folder and start your nRide Node
+
+
  
 
-## Local Images
 
-- `make install`      *Builds the chain's binary*
-- `make local-image`  *Builds the chain's docker image*
-- `make testnet`     *Builds the testnet*
-- `make sh-testnet`   *Build the local testnet*
-
-## TestingSetting up the nRide Node (not necessary if you only want to opt-in))
+## Setting up the nRide Node (not necessary if you only want to opt-in...)
 
 please join the given Telegram Group, if you like to opt-in into our testnet
 https://t.me/nride_official
@@ -39,7 +62,7 @@ https://t.me/nride_official
 - `nano .nrided/config/app.toml`      *head to your home folder and edit app.toml config file in hidden config directory*
 - edit app.toml, change `minimum-gas-prices = "0stake"` to `minimum-gas-prices = "0unride"`
 - 
-If you run a Cosmos Testnet Validator node on the same machine:
+Only necessary ff you run a Cosmos Testnet Validator node on the same machine:
 - `nano .nrided/config/config.toml`      *check for RPC port allocation, to avoid port clashing*
 - `proxy_app = "tcp://127.0.0.1:26658"` change to `proxy_app = "tcp://127.0.0.1:27658"`  also check if your firewall allows these connections
 - under the [rpc] and [p2p] section change each
@@ -51,36 +74,24 @@ If you run a Cosmos Testnet Validator node on the same machine:
 To connect your node to the network, add the following seed to your `config.toml` file:
 
 ```
+[SEED]
 2ac32ef82e917cc2a6256521d09a38056de267e8@212.227.160.56:27656
 ```
 
-### Opt in Before Launch
 
-* You must submit your opt-in transaction before the spawn time is reached to start signing blocks as soon as the chain starts.
+Chain Startup:
 
-```
-gaiad tx provider opt-in 115 --from wallet --chain-id provider --gas auto --gas-adjustment 2 --gas-prices 0.005uatom -y
-```
-
-Check if your subscription worked:
-
-gaiad q provider consumer-opted-in-validators 115
-
-nrided config set client chain-id provider
-
-
-nrided add-consumer-section 115
-
-nrided add-consumer-section provider
-
+After the spawn time has passed, you migrate the CCV state from the underlying provider chain into your ICS chain:
 
 Collect the Cross-Chain Validation (CCV) state from the provider chain.
-gaiad q provider consumer-genesis <consumer-id> -o json > ccv-state.json
+
+`gaiad q provider consumer-genesis <consumer-id> -o json > ccv-state.json`
+
 Update the CCV state with the reward denoms.
-jq '.params.reward_denoms |= ["<your chain denom>"]' ccv-state.json > ccv-denom.json
-jq '.params.provider_reward_denoms |= ["uatom"]' ccv-denom.json > ccv-provider-denom.json
+`jq '.params.reward_denoms |= ["<your chain denom>"]' ccv-state.json > ccv-denom.json`
+`jq '.params.provider_reward_denoms |= ["uatom"]' ccv-denom.json > ccv-provider-denom.json`
 Update the genesis file with the CCV state
-jq -s '.[0].app_state.ccvconsumer = .[1] | .[0]' <consumer genesis without CCV state> ccv-provider-denom.json > <consumer genesis file with CCV state>
+`jq -s '.[0].app_state.ccvconsumer = .[1] | .[0]' <consumer genesis without CCV state> ccv-provider-denom.json > <consumer genesis file with CCV state>`
 
 ### Explanation of Commands
 
