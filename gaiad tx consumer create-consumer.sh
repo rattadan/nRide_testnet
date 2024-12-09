@@ -1,0 +1,17 @@
+  gaiad tx consumer create-consumer \
+    --initial-height-revision-height 1 \
+    --initial-height-revision-number 1 \
+    --genesis-hash "e891b48132860f4ba09bb480ce40b6a174ea9c7fd46ef1932da4e254e4751024b7" \
+    --binary-hash "b693159afbf6786417589e3a51fb76049137d4ebf297cc2a1db7625e177f77ab" \
+    --spawn-time "2024-12-08T20:40:00.000000Z" \
+    --unbonding-period 1728000000000000 \
+    --ccv-timeout-period 2419200000000000 \
+    --transfer-timeout-period 1800000000000 \
+    --consumer-redistribution-fraction "0.50" \
+    --blocks-per-distribution-transmission 1000 \
+    --historical-entries 10000 \
+    --distribution-transmission-channel "channel-123" \
+    --from wallet \
+    --chain-id nride-1 \
+    --node tcp://localhost:26657 \
+    --fees 1000unride
