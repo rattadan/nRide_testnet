@@ -44,7 +44,7 @@ If you want to run a nRide Node on your machine too, you will need to install th
 
 - `git clone https://github.com/rattadan/nRide_testnet.git`   * Clone the Repository
 
-- make install  
+- `make install`
 
 copy the genesis_after_spawn.json into your config folder and start your nRide Node
 
