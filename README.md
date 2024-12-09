@@ -2,6 +2,27 @@
 
 - `git clone https://github.com/rattadan/nRide_testnet.git`   * Clone the Repository
 
+# Phases of launch
+
+There are several phases of the nRide ICS Chain launch:
+1. Build the binaries using the spawn-cli
+2. Creating a pre-spawn genesis.json file
+3. TX a consumer-chain create message in the Security-Providing Network
+4. after spawn time reached, copy the Crosschain-Validation state into the Consumer Node
+5. Start the Consumer Node
+
+Just a few notes: If you start your node before spawn time has reached and no CCV state imported, you will get an error that your network does not reacht the "default-Power-reduction". 
+
+Although you can create Validators in the Genesis file, this set is not necessary for the consensus engine. The Validator Set in an ICS chain serves as blockchain history database and RPC/gRPC nodes and as Token distribution service to Stakers. Rewards will be distributed to the underlying ATOM Validators resp. their stakers and the network stakers on a 50:50 ratio. So with opting-in as a CosmosHUB mainnet Validator, you will generate rewards for your Stakers and your own Commission Share
+
+If you already run a Cosmos Validator in the acive Set, For Opting-in only, there is only one command necessary:
+
+```
+gaiad tx provider opt-in 115 --from wallet --chain-id provider --gas auto --gas-adjustment 2 --gas-prices 0.005uatom -y
+```
+
+ 
+
 ## Local Images
 
 - `make install`      *Builds the chain's binary*
@@ -41,17 +62,50 @@ To connect your node to the network, add the following seed to your `config.toml
 gaiad tx provider opt-in 115 --from wallet --chain-id provider --gas auto --gas-adjustment 2 --gas-prices 0.005uatom -y
 ```
 
+Check if your subscription worked:
+
+gaiad q provider consumer-opted-in-validators 115
+
+nrided config set client chain-id provider
 
 
-## Further resources:
-Game of Chains: First ICS Testnet playground
-https://github.com/LavenderFive/game-of-chains-2022/blob/8b3d2c40b56a30a45e444d65bd9419ad7c0fe1a1/README.md
+nrided add-consumer-section 115
 
-Interchain ICS repository:
-https://cosmos.github.io/interchain-security/consumer-development/app-integration
+nrided add-consumer-section provider
 
-Spawn Github:
-https://rollchains.github.io/spawn/v0.50/
+
+Collect the Cross-Chain Validation (CCV) state from the provider chain.
+gaiad q provider consumer-genesis <consumer-id> -o json > ccv-state.json
+Update the CCV state with the reward denoms.
+jq '.params.reward_denoms |= ["<your chain denom>"]' ccv-state.json > ccv-denom.json
+jq '.params.provider_reward_denoms |= ["uatom"]' ccv-denom.json > ccv-provider-denom.json
+Update the genesis file with the CCV state
+jq -s '.[0].app_state.ccvconsumer = .[1] | .[0]' <consumer genesis without CCV state> ccv-provider-denom.json > <consumer genesis file with CCV state>
+
+### Explanation of Commands
+
+The commands you provided are using `jq`, a lightweight and flexible command-line JSON processor, to manipulate JSON files. Here's what each command does:
+
+#### First Command:
+
+```bash
+jq '.params.reward_denoms |= ["<your chain denom>"]' ccv-state.json > ccv-denom.json
+```
+This command takes the `ccv-state.json` file and updates the `reward_denoms` field within the `params` object to be a list containing `"<your chain denom>"`. The result is then saved to a new file called `ccv-denom.json`.
+
+#### Second Command:
+
+```bash
+jq '.params.provider_reward_denoms |= ["uatom"]' ccv-denom.json > ccv-provider-denom.json
+```
+This command takes the `ccv-denom.json` file and updates the `provider_reward_denoms` field within the `params` object to be a list containing `"uatom"`. The result is saved to a new file called `ccv-provider-denom.json`.
+
+#### Third Command:
+
+```bash
+jq -s '.[0].app_state.ccvconsumer = .[1] | .[0]' <consumer genesis without CCV state> ccv-provider-denom.json > <consumer genesis file with CCV state>
+```
+This command uses the `-s` option of `jq`, which reads all inputs into an array. It takes two JSON files: a consumer genesis file without CCV state and `ccv-provider-denom.json`. It assigns the content of `ccv-provider-denom.json` to the `ccvconsumer` field within the `app_state` object of the first file. The modified genesis file is then saved to a new file, which is the consumer genesis file with the CCV state added.
 
 ## Helpful Commands
 
@@ -82,7 +136,6 @@ interchain-security-pd tx provider opt-in <consumer-id> <optional consumer-pub-k
 **Note:**
 - With my binary instance, there was an error, so you have to leave the pubkey away...
 
-Example command:
 
 ```
 gaiad tx provider opt-in 115 --from wallet --chain-id provider --gas auto --gas-adjustment 2 --gas-prices 0.005uatom -y
@@ -115,3 +168,13 @@ This repository contains the configuration files and scripts for setting up the 
 ### Important Parameters
 
 - **Genesis Time**: Set in `nride_fresh_genesis.json` to specify the start time of the blockchain.
+
+## Further resources:
+Game of Chains: First ICS Testnet playground
+https://github.com/LavenderFive/game-of-chains-2022/blob/8b3d2c40b56a30a45e444d65bd9419ad7c0fe1a1/README.md
+
+Interchain ICS repository:
+https://cosmos.github.io/interchain-security/consumer-development/app-integration
+
+Spawn Github:
+https://rollchains.github.io/spawn/v0.50/
