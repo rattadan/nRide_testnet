@@ -14,7 +14,6 @@ Just a few notes: If you start your node before spawn time has reached and no CC
 
 Although you can create Validators in the Genesis file, this set is not necessary for the consensus engine. The Validator Set in an ICS chain serves as blockchain history database and RPC/gRPC nodes and as Token distribution service to Stakers. Rewards will be distributed to the underlying ATOM Validators resp. their stakers and the network stakers on a 50:50 ratio. So with opting-in as a CosmosHUB mainnet Validator, you will generate rewards for your Stakers and your own Commission Share
 
-If you already run a Cosmos Validator in the active Set, For Opting-in only, there is only one command necessary:
 
 
 ### Opt in as Cosmos Validator
