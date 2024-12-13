@@ -6,7 +6,7 @@
   "website": "https://example.com",
   "network_type": "testnet",
   "pretty_name": "Nridetestnet",
-  "chain_id": "localchain-1",
+  "chain_id": "nridetestnet-1",
   "bech32_prefix": "nride",
   "daemon_name": "nrided",
   "node_home": "$HOME/.nridetestnet",
@@ -54,7 +54,7 @@
     ],
     "genesis": {
       "name": "v1",
-      "genesis_url": "https://github.com/rollchains/nridetestnet/networks/raw/main/genesis.json"
+      "genesis_url": "https://github.com/rattadan/nRide_testnet/blob/main/nride_fresh_genesis.json"
     },
     "versions": [
       {
@@ -68,7 +68,7 @@
   },
   "images": [
     {
-      "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/cosmoshub/images/atom.png",
+      "png": "https://raw.githubusercontent.com/cosmos/chain-registry/master/juno/images/nride.png",
       "theme": {
         "primary_color_hex": "#FF2D00"
       }

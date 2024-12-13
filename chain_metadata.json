@@ -1,22 +1,22 @@
 {
   "display": {
-    "name": "nridetestnet",
-    "description": "nridetestnet is an Interchain blockchain.",
+    "name": "nRide web3 ride-hailing",
+    "description": "nRide is a decentralized ride-hailing service that connects riders and drivers directly, eliminating intermediaries and reducing costs.",
     "links": {
-      "logo": "https://raw.githubusercontent.com/cosmos/chain-registry/master/cosmoshub/images/atom.png",
-      "discord": "https://discord.gg/your-discord",
-      "email": "example@example.com",
-      "github": "https://github.com/rollchains/nridetestnet",
-      "telegram": "https://t.me/example",
-      "twitter": "https://twitter.com/example_account",
-      "website": "https://example.com",
-      "whitepaper": "https://bitcoin.org/bitcoin.pdf"
+      "logo": "https://7052pdsgs5a8he1mmine0osg4s.ingress.akash-palmito.org/wp-content/uploads/akash.png",
+      "discord": "https://discord.gg/XC9Br9CnBv",
+      "email": "info@nride.com",
+      "github": "https://github.com/nride",
+      "telegram": "https://t.me/nride_official",
+      "twitter": "https://twitter.com/nRide12",
+      "website": "https://7052pdsgs5a8he1mmine0osg4s.ingress.akash-palmito.org/",
+      "whitepaper": "https://7052pdsgs5a8he1mmine0osg4s.ingress.akash-palmito.org/whitepaper.pdf"
     },
     "widget": {
-      "title": "nridetestnet",
-      "description": "nridetestnet is a Interchain blockchain.",
+      "title": "nRide",
+      "description": "Decentralized ride-hailing service.",
       "buttonText": "Learn More",
-      "buttonUrl": "https://example.com"
+      "buttonUrl": "https://7052pdsgs5a8he1mmine0osg4s.ingress.akash-palmito.org/"
     }
   }
 }
