@@ -53,30 +53,44 @@ copy the genesis_after_spawn.json into your config folder and start your nRide N
 please join the given Telegram Group, if you like to opt-in into our testnet
 https://t.me/nride_official
 
-- `nrided init <your_moniker> --chain-id nride-1`      *creates the config folder and initialises node binary*
-- `nano .nrided/config/app.toml`      *head to your home folder and edit app.toml config file in hidden config directory*
-- edit app.toml, change `minimum-gas-prices = "0stake"` to `minimum-gas-prices = "0unride"`
-- 
-Only necessary if you run a Cosmos Testnet Validator node on the same machine:
-- `nano .nrided/config/config.toml`      *check for RPC port allocation, to avoid port clashing*
-- `proxy_app = "tcp://127.0.0.1:26658"` change to `proxy_app = "tcp://127.0.0.1:27658"`  also check if your firewall allows these connections
-- under the [rpc] and [p2p] section change each
-- `laddr = "tcp://127.0.0.1:26657"` change to `tcp://127.0.0.1:27657"`
-- in client.toml change `node = "tcp://localhost:26657"`  to `node = "tcp://localhost:27657"` 
+
+
+- `nrided init <your_moniker> --chain-id nride-1`      *creates the config folder and initializes the node
+change gas prices in app.toml:
+minimum-gas-prices = "0.25unride"
+change 
+chain-id = "nridetestnet-1"
+in client.toml
+backup your priv.validator and node key savely
+
+copy the provided genesis file into this folder:
+
+
+cp nride_fresh_genesis.json ~/.nridetestnet/config
 
 ### Adding Seed to config.toml
 
 To connect your node to the network, add the following seed to your `config.toml` file:
 
-```
+```toml
 [SEED]
 2ac32ef82e917cc2a6256521d09a38056de267e8@212.227.160.56:27656
 ```
 
-
 Chain Startup:
 
 After the spawn time has passed, you migrate the CCV state from the underlying provider chain into your ICS chain:
+
+As long as you don't have a valid CCV state within your genesis and try to start the node, you will encounter this error:
+
+```
+failure when running app err="error during handshake: error on replay: validator set is empty after InitGenesis, please ensure at least one validator is initialized with a delegation greater than or equal to the DefaultPowerReduction ({824641568320})"
+```
+
+So lets go on:
+
+
+After Spawn time has passed, you can export the CCV state from an active Node synced with the Security Providing Network
 
 Collect the Cross-Chain Validation (CCV) state from the provider chain.
 
@@ -140,8 +154,7 @@ Consumer ID for Testnet = 115
 - `consumer-id` is the identifier of the consumer chain the validator wants to opt in to.
 - `consumer-pub-key` corresponds to the public key the validator wants to use on the consumer chain, and it has the following format: `{"@type":"/cosmos.crypto.ed25519.PubKey","key":"<key>"}`.
 
-**Note:**
-- With my binary instance, there was an error, so you have to leave the pubkey away...
+
 
 
 ```
@@ -182,8 +195,9 @@ This repository contains the configuration files and scripts for setting up the 
 
 
 
-
 Create a Validator on Provider Testnet:
+
+https://github.com/cosmos/testnets/tree/master/interchain-security/provider#bash-script
 
 according to # Gaia v21.0.0 Release Notes 
 
