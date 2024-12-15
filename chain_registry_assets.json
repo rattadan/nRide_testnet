@@ -1,6 +1,6 @@
 {
   "$schema": "https://github.com/cosmos/chain-registry/blob/master/assetlist.schema.json",
-  "chain_name": "nridetestnet",
+  "chain_name": "nridetestnet-1",
   "assets": [
     {
       "description": "The native token of nridetestnet",

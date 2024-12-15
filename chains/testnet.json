@@ -83,10 +83,10 @@
             "debugging": false,
             "block_time": "2000ms",
             "host_port_override": {
-                "1317": "1317",
-                "26656": "26656",
-                "26657": "26657",
-                "9090": "9090"
+                "1317": "1417",
+                "26656": "27656",
+                "26657": "27657",
+                "9090": "9190"
             },
             "ics_consumer_link": "localcosmos-1",
             "ics_version_override": {}

@@ -165,6 +165,15 @@ gaiad tx provider opt-in 115 --from wallet --chain-id provider --gas auto --gas-
 
 This repository contains the configuration files and scripts for setting up the nRide blockchain network.
 
+Modify your Genesis File, set chain parameters like total supply, inflation rate, community pool, Genesis Adress Allocations, Genesis Validators Delegations accordingly.
+
+check for consistency:
+
+nrided genesis validate nride_fresh_genesis.json
+
+generate sha256 checksum
+
+
 ### Files
 
 - **nride_fresh_genesis.json**: The main genesis file for the nRide blockchain without CCTV states.

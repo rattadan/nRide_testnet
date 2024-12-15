@@ -1,7 +1,7 @@
 {
   "app_name": "nrided",
   "app_version": "9cb3d87",
-  "genesis_time": "2024-12-04T10:13:37.34718683Z",
+  "genesis_time": "2024-12-18T10:13:37.34718683Z",
   "chain_id": "nridetestnet-1",
   "initial_height": 1,
   "app_hash": null,
@@ -242,13 +242,13 @@
     "mint": {
       "minter": {
         "inflation": "0.050000000000000000",
-        "annual_provisions": "0.000000000000000000"
+        "annual_provisions": "0.200000000000000000"
       },
       "params": {
         "mint_denom": "unride",
         "inflation_rate_change": "0.030000000000000000",
         "inflation_max": "0.200000000000000000",
-        "inflation_min": "0.070000000000000000",
+        "inflation_min": "0.007000000000000000",
         "goal_bonded": "0.370000000000000000",
         "blocks_per_year": "6311520"
       }
@@ -279,7 +279,7 @@
     },
     "slashing": {
       "params": {
-        "signed_blocks_window": "100",
+        "signed_blocks_window": "25000",
         "min_signed_per_window": "0.500000000000000000",
         "downtime_jail_duration": "600s",
         "slash_fraction_double_sign": "0.050000000000000000",
@@ -289,7 +289,7 @@
       "missed_blocks": []
     },
     "staking": {
-      "params": {
+        "params": {
         "unbonding_time": "1814400s",
         "max_validators": 100,
         "max_entries": 7,
