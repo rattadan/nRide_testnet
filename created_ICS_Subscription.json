@@ -1,5 +1,5 @@
 {
-  "chain_id": "nridetestnet-1",
+  "chain_id": "nride-testnet-1",
   "metadata": {
     "name": "nRide ICS Testnet",
     "description": "nRide ICS Testnet",
@@ -27,6 +27,6 @@
     "allowlist": [],
     "denylist": [],
     "min_stake": "0",
-    "allow_inactive_vals": false
+    "allow_inactive_vals": true
   }
 }

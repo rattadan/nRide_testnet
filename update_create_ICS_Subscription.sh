@@ -25,7 +25,7 @@ BINARY="$GOPATH/bin/nrided"
 BINARY_HASH=$(sha256sum "$BINARY" | awk '{ print $1 }')
 
 # Expected chain_id
-EXPECTED_CHAIN_ID="nridetestnet-1"
+EXPECTED_CHAIN_ID="nride-testnet-1"
 
 # Retrieve the chain_id from the genesis file
 CHAIN_ID=$(jq -r '.chain_id' "$GENESIS_FILE")
@@ -73,7 +73,7 @@ OUTPUT_JSON=$(jq -n \
     "allowlist": [],
     "denylist": [],
     "min_stake": "0",
-    "allow_inactive_vals": false
+    "allow_inactive_vals": true
   }
     }')
 
