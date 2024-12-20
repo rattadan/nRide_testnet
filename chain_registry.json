@@ -78,23 +78,23 @@
   "apis": {
     "rpc": [
       {
-        "address": "http://127.0.0.1:26657",
-        "provider": "localhost"
+        "address": "http://212.227.160.56:27657",
+        "provider": "nRide RPC"
       }
     ],
     "rest": [
       {
-        "address": "http://127.0.0.1:1317",
-        "provider": "localhost"
+        "address": "http://212.227.160.56:1417",
+        "provider": "nRide REST"
       }
     ]
   },
   "explorers": [
     {
       "kind": "cosmos",
-      "url": "https://example.com",
-      "tx_page": "https://example.com/tx",
-      "account_page": "https://example.com/account"
+      "url": "http://212.227.73.190",
+      "tx_page": "http://212.227.73.190/tx",
+      "account_page": "http://212.227.73.190/account"
     }
   ],
   "keywords": [

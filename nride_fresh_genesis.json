@@ -246,11 +246,11 @@
       },
       "params": {
         "mint_denom": "unride",
-        "inflation_rate_change": "0.030000000000000000",
+        "inflation_rate_change": "0.300000000000000000",
         "inflation_max": "0.200000000000000000",
         "inflation_min": "0.007000000000000000",
         "goal_bonded": "0.370000000000000000",
-        "blocks_per_year": "6311520"
+        "blocks_per_year": "31536000"
       }
     },
     "nft": {

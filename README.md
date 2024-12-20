@@ -65,9 +65,9 @@ backup your priv.validator and node key savely
 
 copy the provided genesis file into this folder:
 
-
+```
 cp nride_fresh_genesis.json ~/.nridetestnet/config
-
+```
 ### Adding Seed to config.toml
 
 To connect your node to the network, add the following seed to your `config.toml` file:
@@ -125,7 +125,13 @@ This command takes the `ccv-denom.json` file and updates the `provider_reward_de
 ```bash
 jq -s '.[0].app_state.ccvconsumer = .[1] | .[0]' <consumer genesis without CCV state> ccv-provider-denom.json > <consumer genesis file with CCV state>
 ```
+
 This command uses the `-s` option of `jq`, which reads all inputs into an array. It takes two JSON files: a consumer genesis file without CCV state and `ccv-provider-denom.json`. It assigns the content of `ccv-provider-denom.json` to the `ccvconsumer` field within the `app_state` object of the first file. The modified genesis file is then saved to a new file, which is the consumer genesis file with the CCV state added.
+
+If you have a Gaia node and a nRide node on the same machine, you can use the script here:
+
+##Add Script here
+
 
 ## Helpful Commands
 
@@ -169,7 +175,9 @@ Modify your Genesis File, set chain parameters like total supply, inflation rate
 
 check for consistency:
 
+```
 nrided genesis validate nride_fresh_genesis.json
+```
 
 generate sha256 checksum
 
@@ -201,8 +209,21 @@ generate sha256 checksum
 
 - **Genesis Time**: Set in `nride_fresh_genesis.json` to specify the start time of the blockchain.
 
+## update_create_ICS_Subscription.sh
 
+This script is responsible for generating the `create_ICS_Subscription.json` file based on the current genesis file and binary. It retrieves the necessary parameters, including the chain ID, spawn time, and SHA256 checksums for the genesis file and binary, and constructs a JSON structure that is then saved to the specified output file. The script ensures that the generated JSON is correctly formatted and includes all relevant parameters for the subscription.
 
+### How to Run the Script
+To execute the script, use the following command in your terminal:
+```bash
+bash update_create_ICS_Subscription.sh
+```
+
+### Modifiable Variables
+The following variables can be modified manually within the script:
+- `GENESIS_FILE`: Path to the genesis file (default: `./nride_fresh_genesis.json`).
+- `BINARY`: Path to the binary file (default: `~/go/bin/nrided`).
+- `EXPECTED_CHAIN_ID`: The expected chain ID for validation (default: `nridetestnet-1`).
 
 Create a Validator on Provider Testnet:
 
@@ -212,8 +233,6 @@ according to # Gaia v21.0.0 Release Notes
 
 ❗***You must use Golang v1.22 if building from source.***
 
-took me a few days to learn that v1.23.4 compiled without errors, but the binary showed off errors later
-
 ```bash
 git clone https://github.com/cosmos/gaia
 cd gaia && git checkout v21.0.0
@@ -222,29 +241,42 @@ make install
 
 ..after you compiled the binary:
 
+either use the setup_gaia_testnet_node.sh script, or:
 
+
+```
 gaiad init "Your Label Here" --chain-id provider
 cd .gaia/config
 nano app.toml
-minimum-gas-prices = "0.025uatom" 
+minimum-gas-prices = "0.025uatom"
+```
 
 sync your node using this guide from nodestake
 https://nodestake.org/cosmos
 set seed, peers and download snapshsot
 lets sync: gaiad start 
 
+
 create a wallet
+```
 gaiad keys add wallet
+```
 or recover an existing one
+```
 gaiad keys add wallet --recover
 gaiad keys list
+```
 
 get some testnet atoms on your wallet (ask in discord or tg)
 
+if you need a custom port mapping, if you are running a gaia node and a nRide node the same time, use the gaia_port_settings.sh script
 
+```
 gaiad tx staking create-validator create_validator_gaia.json --from wallet --gas auto --gas-adjustment 2 --gas-prices 0.005uatom
+```
 
 with
+
 create_validator_gaia.json 
   {
 	"pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"BcCDlvRODsZCYNi82PJA4h9Xe0+nht6EU5mXOQlmLyE="},
