@@ -1,0 +1,1 @@
+gaiad tx provider create-consumer $HOME/.gaia/config/created_ICS_Subscription.json --from wallet --chain-id provider --gas auto --gas-adjustment 2 --gas-prices 0.005uatom -y

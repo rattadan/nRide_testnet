@@ -36,6 +36,15 @@ while 115 is the consumer-chain-id.
 
 As an opted-in Validator, you and all your stakers will earn network rewards from the nRide network.
 
+## Update the Inscription:
+
+gaiad q provider  consumer-chain 116 --output json > 116.json
+
+modify the .json file, and submit again:
+
+gaiad tx provider update-consumer 116.json --from wallet --gas auto --gas-adjustment 2 --gas-prices 0.005uatom -y
+
+
 ## Run a local nRide Node on your machine
 
 If you want to run a nRide Node on your machine too, you will need to install the "nrided" binary: 

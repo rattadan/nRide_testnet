@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Path to the genesis file
-GENESIS_FILE="./nride_fresh_genesis.json"
+GENESIS_FILE="$HOME/.nride/config/nride_fresh_genesis.json"
 
 # Retrieve the genesis time from the genesis file
 GENESIS_TIME=$(jq -r '.genesis_time' "$GENESIS_FILE")
@@ -78,6 +78,6 @@ OUTPUT_JSON=$(jq -n \
     }')
 
 # Write the generated JSON to create_ICS_Subscription.json
-echo "$OUTPUT_JSON" > /home/ubuntu/spawn/nridetestnet/created_ICS_Subscription.json
+echo "$OUTPUT_JSON" > $HOME/.gaia/config/created_ICS_Subscription.json
 
 echo "Update completed successfully! Spawn time set to: $SPAWN_TIME"
