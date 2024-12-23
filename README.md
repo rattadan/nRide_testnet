@@ -29,20 +29,20 @@ gaiad tx provider opt-in 115 --from wallet --chain-id provider --gas auto --gas-
 Check if your subscription worked:
 
 ```
-gaiad q provider consumer-opted-in-validators 115
+gaiad q provider consumer-opted-in-validators 136
 ```
 
-while 115 is the consumer-chain-id.
+while 136 is the consumer-chain-id.
 
 As an opted-in Validator, you and all your stakers will earn network rewards from the nRide network.
 
 ## Update the Inscription:
 
-gaiad q provider  consumer-chain 116 --output json > 116.json
+gaiad q provider  consumer-chain 136 --output json > 136.json
 
 modify the .json file, and submit again:
 
-gaiad tx provider update-consumer 116.json --from wallet --gas auto --gas-adjustment 2 --gas-prices 0.005uatom -y
+gaiad tx provider update-consumer 136.json --from wallet --gas auto --gas-adjustment 2 --gas-prices 0.005uatom -y
 
 
 ## Run a local nRide Node on your machine

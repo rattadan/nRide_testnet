@@ -1,0 +1,33 @@
+{
+  "chain_id": "nride-testnet-1",
+    "metadata": {
+      "name": "nRide Testnet ",
+      "description": "nRide is developing a peer-to-peer ride-hailing protocol that connects riders and drivers directly, eliminating intermediaries. By removing middlemen, nRide aims to reduce fees and increase transparency, while also creating a more equitable platform for drivers and riders. Additionally, nRide solves the problem of isolated user bases by providing a standardized way for ride-hailing applications to connect with each other and access a larger user base, fostering a more open and competitive marketplace",
+      "metadata": "{\"forge_json_url\":\"https://raw.githubusercontent.com/nride/nride-sc/refs/heads/main/assets/nRide.json\",\"stage\":\"pre-launch\"}"
+    },
+    "initialization_parameters": {
+      "initial_height": {
+       "revision_number": 1,
+       "revision_height": 1 
+      },
+      "genesis_hash": "b693159afbf6786417589e3a51fb76049137d4ebf297cc2a1db7625e177f77ab",
+      "binary_hash": "b6b0da89db3ce17bffc9cca79d40d4e53accddcbcb204f7ea1b43edd536d7746",
+      "spawn_time": "2024-12-23T17:50:00.000000Z",
+      "unbonding_period": 1209600000000000,
+      "ccv_timeout_period": 2419200000000000,
+      "transfer_timeout_period": 1800000000000,
+      "consumer_redistribution_fraction": "0.50",
+      "blocks_per_distribution_transmission": 1000,
+      "historical_entries": 10000,
+      "distribution_transmission_channel": ""
+    },
+    "power_shaping_parameters": {
+      "top_N": 0,
+      "validators_power_cap": 20,
+      "validator_set_cap": 40,
+      "allowlist": [],
+      "denylist": [],
+      "min_stake": 1,
+      "allow_inactive_vals": true
+    }
+  }

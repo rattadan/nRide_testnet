@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Path to the genesis file
-GENESIS_FILE="$HOME/.nride/config/nride_fresh_genesis.json"
+GENESIS_FILE="$HOME/.nridetestnet/config/genesis_pre_spawn.json"
 
 # Retrieve the genesis time from the genesis file
 GENESIS_TIME=$(jq -r '.genesis_time' "$GENESIS_FILE")
@@ -48,8 +48,8 @@ OUTPUT_JSON=$(jq -n \
         chain_id: $chain_id,
         metadata: {
             name: "nRide ICS Testnet",
-            description: "nRide ICS Testnet",
-            metadata: "no metadata"
+            description: "nRide is developing a peer-to-peer ride-hailing protocol that connects riders and drivers directly, eliminating intermediaries. By removing middlemen, nRide aims to reduce fees and increase transparency, while also creating a more equitable platform for drivers and riders. Additionally, nRide solves the problem of isolated user bases by providing a standardized way for ride-hailing applications to connect with each other and access a larger user base, fostering a more open and competitive marketplace",
+            metadata: "{\"forge_json_url\":\"https://raw.githubusercontent.com/nride/nride-sc/refs/heads/main/assets/nRide.json\",\"stage\":\"pre-launch\"}"
         },
         initialization_parameters: {
             initial_height: {
@@ -66,13 +66,13 @@ OUTPUT_JSON=$(jq -n \
             blocks_per_distribution_transmission: 1000,
             historical_entries: 10000
         },
-"power_shaping_params": {
+"power_shaping_parameters": {
     "top_N": 0,
     "validators_power_cap": 20,
     "validator_set_cap": 40,
     "allowlist": [],
     "denylist": [],
-    "min_stake": "0",
+    "min_stake": 1,
     "allow_inactive_vals": true
   }
     }')
