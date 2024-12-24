@@ -10,7 +10,7 @@ GENESIS_TIME=$(jq -r '.genesis_time' "$GENESIS_FILE")
 GENESIS_EPOCH=$(date -d "$GENESIS_TIME" +%s)
 
 # Calculate the spawn time (6 hours before genesis time)
-SPAWN_EPOCH=$(($GENESIS_EPOCH - 21600))
+SPAWN_EPOCH=$(($GENESIS_EPOCH + 21600))
 SPAWN_TIME=$(date -d "@$SPAWN_EPOCH" -Iseconds)
 
 # Retrieve the sa256checksums from nride_fresh_genesis.json
@@ -68,11 +68,11 @@ OUTPUT_JSON=$(jq -n \
         },
 "power_shaping_parameters": {
     "top_N": 0,
-    "validators_power_cap": 20,
+    "validators_power_cap": 80,
     "validator_set_cap": 40,
     "allowlist": [],
     "denylist": [],
-    "min_stake": 1,
+    "min_stake": 0,
     "allow_inactive_vals": true
   }
     }')

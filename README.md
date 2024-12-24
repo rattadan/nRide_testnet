@@ -36,6 +36,32 @@ while 136 is the consumer-chain-id.
 
 As an opted-in Validator, you and all your stakers will earn network rewards from the nRide network.
 
+## Inscribe your ICS chain into the provider chains registry
+
+You may use the 
+
+```sh update_create_ICS_Subscription.sh``` script to create a .json file that can be submitted to the Security-Providing Network.
+
+This creates a file:
+
+```/.gaia/config/created_ICS_Subscription.json```
+
+that you can broadcast
+
+```gaiad tx provider create-consumer created_ICS_Subscription.json --from wallet --chain-id provider --gas auto --gas-adjustment 2 --gas-prices 0.005uatom -y```
+
+
+Notice:
+When editing .json files, check for empty spaces and obsolete carriage returns, because they are likely to cause parsing errors during TX message creation. I recommend you to use VS code or similiar applications to edit the json files. Furthermore you need to use the "--output json" flag when exporting states from the Binary
+
+Check the correct creation of the ICS inscritpion message by using the "--generate-only" flag. Check if the Spawn Time and the Power Shaping parameters are parsed correctly.
+Check if the Spawn time is later than the Genesis Time
+
+# Submit the Inscription:
+
+gaiad tx provider create-consumer ICS.json --from wallet --chain-id provider --gas auto --gas-adjustment 2 --gas-prices 0.005uatom -y
+
+
 ## Update the Inscription:
 
 gaiad q provider  consumer-chain 136 --output json > 136.json
@@ -103,13 +129,19 @@ After Spawn time has passed, you can export the CCV state from an active Node sy
 
 Collect the Cross-Chain Validation (CCV) state from the provider chain.
 
-`gaiad q provider consumer-genesis <consumer-id> -o json > ccv-state.json`
+```gaiad q provider consumer-genesis <consumer-id> -o json > ccv-state.json```
 
-Update the CCV state with the reward denoms.
-`jq '.params.reward_denoms |= ["<your chain denom>"]' ccv-state.json > ccv-denom.json`
-`jq '.params.provider_reward_denoms |= ["uatom"]' ccv-denom.json > ccv-provider-denom.json`
+Update the CCV state with the reward denoms. Set the Chain native denom:
+```jq '.params.reward_denoms |= ["<your chain denom>"]' ccv-state.json > ccv-denom.json```
+
+Set the provider reward denon:
+
+```jq '.params.provider_reward_denoms |= ["uatom"]' ccv-denom.json > ccv-provider-denom.json```
+
 Update the genesis file with the CCV state
-`jq -s '.[0].app_state.ccvconsumer = .[1] | .[0]' <consumer genesis without CCV state> ccv-provider-denom.json > <consumer genesis file with CCV state>`
+```jq -s '.[0].app_state.ccvconsumer = .[1] | .[0]' <consumer genesis without CCV state> ccv-provider-denom.json > <consumer genesis file with CCV state>```
+
+
 
 ### Explanation of Commands
 
