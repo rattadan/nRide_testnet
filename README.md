@@ -2,7 +2,7 @@
 
 This repo describes the process of launching an ICS chain on the provider CosmosHUB Testnet.
 
-[nRide Website](https://7052pdsgs5a8he1mmine0osg4s.ingress.akash-palmito.org/?cat=1)
+[nRide Website][https://nride.network/]
 
 # Phases of Launch
 
